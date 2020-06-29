@@ -5,14 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {},
+    isShow: true
   },
-
+  handleUserInfo(e){
+    const userInfo = e.detail.userInfo
+    console.log(e)
+    this.setData({
+      userInfo: userInfo,
+      isShow: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function(res) {
+              console.log("1111")
+              that.setData({
+                userInfo: res.userInfo,
+                isShow: false
+              })
+            }
+          })
+        }
+      }
+    })
   },
 
   /**

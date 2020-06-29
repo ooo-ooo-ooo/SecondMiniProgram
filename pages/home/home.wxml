@@ -1,2 +1,6 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<button open-type="getUserInfo" bindgetuserinfo="handleUserInfo" wx:if="{{isShow}}">获取信息</button>
+<view wx:else>
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <view>{{userInfo.nickName}}</view>
+</view>
