@@ -1,2 +1,3 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<button bindtap="handleChooseImg">选择图片</button>
+<image wx:for="{{imagePath}}" src="{{item}}"/>

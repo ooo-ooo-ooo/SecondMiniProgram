@@ -5,9 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imagePath: []
   },
-
+  handleChooseImg(){
+    count: 3,
+    wx.chooseImage({
+      success: (res) => {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        this.setData({
+          imagePath: tempFilePaths
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -42,7 +53,6 @@ Page({
   onUnload: function () {
 
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
