@@ -1,2 +1,14 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 
+  数据：properties
+  样式：externalClasses
+ -->
+<!-- 样式和数据传递 -->
+<my-prop title="哈哈哈" titleclasses="red"/>
+<my-prop title="嘿嘿嘿" titleclasses="yellow"/>
+<my-prop title="呵呵呵" titleclasses="blue"/>
+
+
+<!-- this.triggerEvent -->
+<view>{{counter}}</view>
+<my-event bind:increment="handleIncrement"/>

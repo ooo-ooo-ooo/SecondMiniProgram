@@ -5,9 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    counter: 0
   },
-
+  handleIncrement(){
+    this.setData({
+      counter: this.data.counter + 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

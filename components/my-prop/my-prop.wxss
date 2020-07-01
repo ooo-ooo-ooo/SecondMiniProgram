@@ -1,0 +1,11 @@
+/* components/my-prop/my-prop.wxss */
+.title{
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.content{
+  font-size: 36rpx;
+}
+
+
+
