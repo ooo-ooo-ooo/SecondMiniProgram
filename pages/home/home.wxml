@@ -1,2 +1,10 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 1.wxs的定义方式 -->
+<wxs src="../wxs/info.wxs" module="info"/>
+<view>{{info.message}}</view>
+<view>{{info.name}}</view>
+<view>{{info.sum(20,30)}}</view>
+
+<!-- 2.wxs案例 -->
+<wxs src="../wxs/demo.wxs" module="demo"/>
+<view>{{demo.priceFormat(price)}}</view>
