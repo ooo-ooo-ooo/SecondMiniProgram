@@ -1,2 +1,12 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 事件的传递参数 -->
+<view class="box">
+  <block wx:for="{{titles}}" wx:key="item">
+    <view class="item {{currentIndex == index ? 'active' : ''}}"
+          bindtap="handleItemClick"
+          data-item="{{item}}"
+          data-index="{{index}}">
+      {{item}}
+    </view>
+  </block>
+</view>

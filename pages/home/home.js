@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    titles: ['衣服', '裤子', '鞋子'],
+    currentIndex: 0
+  },
+  handleItemClick(e){
+    const index = e.currentTarget.dataset.index;
+    const item = e.currentTarget.dataset.item;
+    this.setData({
+      currentIndex: index
+    })
   },
 
   /**
