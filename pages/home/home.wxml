@@ -1,2 +1,5 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<wxs src="../wxs/demo.wxs" module="info"/>
+
+<view>{{info.priceFormat(price)}}</view>
+<view>{{info.dateFormat(time, 'yyyy-MM-dd hh:mm:ss')}}</view>
