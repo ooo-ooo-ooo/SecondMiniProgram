@@ -6,12 +6,76 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+
+    // 1.先从缓存中取出token
+    const token = wx.getStorageSync('token');
+    // 2.判断token是否有值
+    if(token && token.length !== 0){
+      // 验证token是否过期
+      wx.request({
+        url: '',
+        method: 'post',
+        header: {
+          token
+        },
+        success: res=>{
+          if(!res.data.errCode){
+            this.globalData.token = token
+          }else{
+            wx.login({
+              success: res => {
+                // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                const code = res.code;
+                wx.request({
+                  url: 'url',
+                  method: 'post',
+                  data: {
+                    code
+                  },
+                  success: res => {
+                    // 1.取出token
+                    const token = res.data.token
+      
+                    // 2.将token保存在globalData中
+                    this.globalData.token = token
+      
+                    // 3.进行本地存储
+                    wx.setStorageSync('token', token)
+                  }
+                })
+              }
+            })
+          }
+        }
+      })
+    }else{
+       // 登录
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          const code = res.code;
+          wx.request({
+            url: 'url',
+            method: 'post',
+            data: {
+              code
+            },
+            success: res => {
+              // 1.取出token
+              const token = res.data.token
+
+              // 2.将token保存在globalData中
+              this.globalData.token = token
+
+              // 3.进行本地存储
+              wx.setStorageSync('token', token)
+            }
+          })
+        }
+      })
+    }
+
+   
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -34,6 +98,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    token: "",
+    url: 'http://123.207.32.32:8000'
   }
 })

@@ -1,4 +1,5 @@
 // pages/home/home.js
+import {getMultidata} from '../../service/home.js'
 Page({
 
   /**
@@ -12,7 +13,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getMultidata().then(res => {
+      console.log(res)
+    })
   },
 
   /**
