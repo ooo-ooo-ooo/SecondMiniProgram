@@ -1,32 +1,35 @@
 // pages/home/home.js
+const TOP_DISTANCE = 1000;
+
 Page({
 
   /**
    * 页面的初始数据
    */
+
   data: {
-
+    showBackTop: false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  handleBackTop(){
+    wx.pageScrollTo({
+      scrollTop: 0,
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 监听按钮回到顶部
+  onPageScroll(options){
+    const scrollTop = options.scrollTop;
+    const flag = scrollTop >= TOP_DISTANCE;
+    if(flag != this.data.showBackTop){
+      this.setData({
+        showBackTop: flag
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    // 监听具体的组件到达指定的位置变成悬停
+    // wx.createSelectorQuery().select(dom).boundingClientRect(rect => {
+    //   console.log(rect)
+    // }).exec()
   },
 
   /**

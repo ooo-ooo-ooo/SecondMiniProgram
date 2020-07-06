@@ -1,2 +1,3 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class="box">11111</view>
+<view class="back-top" wx:if="{{showBackTop}}" bindtap="handleBackTop">回到顶部</view>
